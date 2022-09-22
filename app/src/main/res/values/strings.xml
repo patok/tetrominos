@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tetrominos</string>
+    <string name="left_text">IZQUIERDA</string>
+    <string name="rigth_text">DERECHA</string>
+    <string name="rotate_left_text">ROTAR IZQ</string>
+    <string name="rotate_right_text">ROTAR DER</string>
+    <string name="down_text">ABAJO</string>
+</resources>
