@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +19,7 @@ public class PlayFieldViewModel extends AndroidViewModel {
     public final PlayField playField;
     public final Tetromino currentBlock;
     public final Game game;
+    private PlayFieldView gameView;
 
     public PlayFieldViewModel(@NonNull Application application) {
         super(application);
@@ -34,5 +37,33 @@ public class PlayFieldViewModel extends AndroidViewModel {
     }
 
 
+    public void setGameView(PlayFieldView playFieldView) {
+        this.gameView = playFieldView;
+    }
 
+    private MutableLiveData<Tetromino> observableNextBlock = new MutableLiveData<>();
+    private MutableLiveData<Integer> observableScore = new MutableLiveData<>();
+    private MutableLiveData<Integer> observableLevel = new MutableLiveData<>();
+
+    public LiveData<Tetromino> getNextBlock() {
+        return observableNextBlock;
+    }
+
+    public LiveData<Integer> getScore() {
+        return observableScore;
+    }
+
+    public LiveData<Integer> getLevel() {
+        return observableLevel;
+    }
+
+    /**
+     * Notify model game data has changed.
+     */
+    public void update() {
+        this.gameView.postInvalidate();
+        observableNextBlock.postValue(game.nextBlock);
+        observableScore.postValue(game.getScore());
+        observableLevel.postValue(game.getGameLevel());
+    }
 }

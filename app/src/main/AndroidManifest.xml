@@ -4,7 +4,7 @@
     package="ar.edu.ips.aus.seminario2.tetrominos">
 
     <application
-        android:name="ar.edu.ips.aus.seminario2.tetrominos.Game"
+        android:name=".Game"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tetrominos"
         tools:targetApi="31">
+        <!-- TODO TP1 provide startup activity to select initial level. -->
         <activity
             android:name=".GameMainActivity"
             android:exported="true"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

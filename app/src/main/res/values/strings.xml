@@ -5,4 +5,12 @@
     <string name="rotate_left_text">ROTAR IZQ</string>
     <string name="rotate_right_text">ROTAR DER</string>
     <string name="down_text">ABAJO</string>
+    <string name="next_block_title">SIG</string>
+    <string name="score_title">PUNTOS</string>
+    <string name="score_value">00000</string>
+    <string name="level_value">0</string>
+    <string name="level_title">NIVEL</string>
+    <string name="game_over_message">Fin</string>
+    <string name="restart_game">Reiniciar</string>
+    <string name="exit_game">Salir</string>
 </resources>
