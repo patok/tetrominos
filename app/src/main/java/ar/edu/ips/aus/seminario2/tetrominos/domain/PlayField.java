@@ -1,4 +1,4 @@
-package ar.edu.ips.aus.seminario2.tetrominos;
+package ar.edu.ips.aus.seminario2.tetrominos.domain;
 
 import android.graphics.Point;
 
@@ -16,8 +16,8 @@ public class PlayField {
     public static final int VERTICAL_SIZE = 22;
     private final int width;
     private final int height;
-    private final boolean[][] cells;
-    private final Tetromino.Shape[][] shapes;
+    private boolean[][] cells;
+    private Tetromino.Shape[][] shapes;
 
     public PlayField(int width, int height) {
         this.width = width;
@@ -108,15 +108,6 @@ public class PlayField {
         }
     }
 
-    private void copy(@NonNull Block newBlock, Point position) {
-        // copy block into field cells
-        for (int j = 0; j < newBlock.getHeight(); j++) {
-            for (int i = 0; i < newBlock.getWidth(); i++) {
-                cells[position.y + j][position.x + i] = newBlock.isFilled(i, j);
-            }
-        }
-    }
-
     /**
      * Check whether block can be positioned as required.
      *
@@ -132,21 +123,26 @@ public class PlayField {
      * Remove all completed levels, starting from biggest level.
      * @return number of removed levels
      */
-    public int removeCompleteLevels() {
+    public int removeCompletedLevels() {
         List<Integer> levelsToRemove = checkLevelCompletion();
 
-        Block targetBlock = new Block(this.width, this.height);
+        boolean[][] targetCells = new boolean[height][width];
+        Tetromino.Shape[][] targetShapes = new Tetromino.Shape[height][width];
+
         int targetLevel = this.height-1;
         for (int sourceLevel = this.height-1; sourceLevel >= 0; sourceLevel--) {
             if (!levelsToRemove.contains(sourceLevel)) {
                 for (int i = 0; i < this.width; i++) {
-                    if (cells[sourceLevel][i])
-                        targetBlock.fill(i, targetLevel);
+                    if (cells[sourceLevel][i]) {
+                        targetCells[targetLevel][i] = true;
+                        targetShapes[targetLevel][i] = shapes[sourceLevel][i];
+                    }
                 }
                 targetLevel--;
             }
         }
-        this.copy(targetBlock, new Point(0,0));
+        this.cells = targetCells;
+        this.shapes = targetShapes;
 
         return levelsToRemove.size();
     }

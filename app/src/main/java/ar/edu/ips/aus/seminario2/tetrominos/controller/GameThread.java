@@ -1,4 +1,4 @@
-package ar.edu.ips.aus.seminario2.tetrominos;
+package ar.edu.ips.aus.seminario2.tetrominos.controller;
 
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -7,14 +7,25 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import ar.edu.ips.aus.seminario2.tetrominos.app.Game;
+import ar.edu.ips.aus.seminario2.tetrominos.infra.ui.GameMainActivity;
+import ar.edu.ips.aus.seminario2.tetrominos.adapter.PlayFieldViewModel;
+
 public class GameThread extends HandlerThread {
-    public static final int DELAY_MS = 40;
+    private static final int DELAY_MS = 40;
     private final Game game;
     private PlayFieldViewModel gameViewModel;
     private boolean paused;
 
     private Handler messageHandler;
     private Handler activityMessageHandler;
+
+    public @NonNull
+    static GameThread initThread(Game app) {
+        GameThread controlThread = new GameThread(app);
+        controlThread.start();
+        return controlThread;
+    }
 
     public GameThread(Game app){
         super("Game thread");
@@ -32,7 +43,7 @@ public class GameThread extends HandlerThread {
             int intervalCount = 0;
 
             @Override
-            public void handleMessage(android.os.Message msg) {
+            public void handleMessage(Message msg) {
                 // process incoming messages here
                 // this will run in non-ui/background thread
                 synchronized (game.playField) {
@@ -43,6 +54,7 @@ public class GameThread extends HandlerThread {
                                     paused = true;
                                     Message message = activityMessageHandler.obtainMessage(
                                             GameMainActivity.GAME_FINISHED);
+                                    message.arg1 = game.getScore();
                                     activityMessageHandler.sendMessage(
                                             message);
                                 }

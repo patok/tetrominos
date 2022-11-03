@@ -1,4 +1,4 @@
-package ar.edu.ips.aus.seminario2.tetrominos;
+package ar.edu.ips.aus.seminario2.tetrominos.domain;
 
 import androidx.annotation.NonNull;
 

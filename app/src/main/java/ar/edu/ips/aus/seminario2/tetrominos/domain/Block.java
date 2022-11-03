@@ -1,4 +1,4 @@
-package ar.edu.ips.aus.seminario2.tetrominos;
+package ar.edu.ips.aus.seminario2.tetrominos.domain;
 
 import androidx.annotation.NonNull;
 
@@ -38,6 +38,10 @@ public class Block {
         this.width = aBlock.width;
         this.height = aBlock.height;
         this.cells = java.util.Arrays.stream(aBlock.cells).map(el -> el.clone()).toArray($ -> aBlock.cells.clone());
+    }
+
+    public boolean[][] getCells() {
+        return this.cells;
     }
 
     public boolean isFilled(int deltaX, int deltaY) {
@@ -132,4 +136,5 @@ public class Block {
         }
         return output.toString();
     }
+
 }

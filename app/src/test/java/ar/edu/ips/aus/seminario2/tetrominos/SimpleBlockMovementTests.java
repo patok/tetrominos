@@ -15,6 +15,9 @@ import static org.mockito.Mockito.*;
 
 import android.graphics.Point;
 
+import ar.edu.ips.aus.seminario2.tetrominos.domain.Block;
+import ar.edu.ips.aus.seminario2.tetrominos.domain.PlayField;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -132,7 +135,7 @@ public class SimpleBlockMovementTests {
         System.out.println(field.toString());
         System.out.println("\n\n");
 
-        assertEquals(field.removeCompleteLevels(), 2);
+        assertEquals(field.removeCompletedLevels(), 2);
 
         System.out.println(field.toString());
         System.out.println("\n\n");
@@ -157,7 +160,7 @@ public class SimpleBlockMovementTests {
         System.out.println(field.toString());
         System.out.println("\n\n");
 
-        assertEquals(field.removeCompleteLevels(), 3);
+        assertEquals(field.removeCompletedLevels(), 3);
 
         System.out.println(field.toString());
         System.out.println("\n\n");
@@ -188,7 +191,7 @@ public class SimpleBlockMovementTests {
         System.out.println(field.toString());
         System.out.println("\n\n");
 
-        assertEquals(field.removeCompleteLevels(), 3);
+        assertEquals(field.removeCompletedLevels(), 3);
 
         System.out.println(field.toString());
         System.out.println("\n\n");

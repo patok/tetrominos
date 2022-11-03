@@ -11,6 +11,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
+import ar.edu.ips.aus.seminario2.tetrominos.domain.PlayField;
+import ar.edu.ips.aus.seminario2.tetrominos.domain.Tetromino;
+
 @RunWith(RobolectricTestRunner.class)
 public class TetrominosTests {
 
