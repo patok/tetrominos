@@ -18,7 +18,7 @@ public class Game extends Application {
     public static final int INITIAL_POSITION_Y = 0;
     public static final String TAG = "Tetro Game";
     private static final int STEP_INTERVAL = 30;
-    private static final int MAX_GAME_LEVEL = 10;
+
     public PlayField playField;
     public Tetromino currentBlock;
     public Tetromino nextBlock;
@@ -45,19 +45,23 @@ public class Game extends Application {
     public static final int PAUSE = 8;
     public static final int STOP = 9;
 
-    private int gameLevel = 1;
+    public static final int EASY_GAME_LEVEL = 1;
+    public static final int MEDIUM_GAME_LEVEL = 3;
+    public static final int HARD_GAME_LEVEL = 5;
+    private static final int MAX_GAME_LEVEL = 10;
+    int startingLevel = EASY_GAME_LEVEL;
+    private int gameLevel = startingLevel;
     private int score = 0;
 
     public Game() {
         super();
-        reset();
     }
 
-    public Game(int initialLevel) {
-        this();
+    public void reset(int initialLevel) {
         if (initialLevel > 0 && initialLevel < MAX_GAME_LEVEL) {
-            gameLevel = initialLevel;
+            startingLevel = initialLevel;
         }
+        reset();
     }
 
     public void reset() {
@@ -67,7 +71,7 @@ public class Game extends Application {
         currentBlock = newRandomBlock();
         currentPosition = new Point(INITIAL_POSITION_X, INITIAL_POSITION_Y);
         status = Status.FREE_RUN;
-        gameLevel = 1;
+        gameLevel = startingLevel;
         score = 0;
     }
 
