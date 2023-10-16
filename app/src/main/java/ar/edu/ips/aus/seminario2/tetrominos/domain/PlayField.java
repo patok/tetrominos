@@ -16,6 +16,7 @@ public class PlayField {
     public static final int VERTICAL_SIZE = 22;
     private final int width;
     private final int height;
+
     private boolean[][] cells;
     private Tetromino.Shape[][] shapes;
 
@@ -50,14 +51,6 @@ public class PlayField {
             }
         }
         return new Block(newCells);
-    }
-
-    public boolean[][] getCells() {
-        return cells;
-    }
-
-    public Tetromino.Shape[][] getShapes() {
-       return shapes;
     }
 
     /**
@@ -172,22 +165,23 @@ public class PlayField {
     @NonNull
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.width; j++) {
-                if (j == 0) {
-                    output.append("|");
-                }
-                output.append(cells[i][j] ? "X" : " ");
-                if (j == this.width - 1) {
-                    output.append("|");
-                }
-            }
-            output.append("\n");
-        }
-        for (int j = 0; j < this.width; j++) {
-            output.append("=");
-        }
-        return output.toString();
+        throw new UnsupportedOperationException();
     }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public boolean[][] getCells() {
+        return cells;
+    }
+
+    public Tetromino.Shape[][] getShapes() {
+        return shapes;
+    }
+
 }

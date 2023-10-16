@@ -121,20 +121,7 @@ public class Block {
     @NonNull
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.width; j++) {
-                if (j == 0) {
-                    output.append("|");
-                }
-                output.append(cells[i][j] ? "X" : " ");
-                if (j == this.width - 1) {
-                    output.append("|");
-                }
-            }
-            output.append("\n");
-        }
-        return output.toString();
+        throw new UnsupportedOperationException();
     }
 
 }

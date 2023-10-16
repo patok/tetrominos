@@ -17,6 +17,7 @@ import android.graphics.Point;
 
 import ar.edu.ips.aus.seminario2.tetrominos.domain.Block;
 import ar.edu.ips.aus.seminario2.tetrominos.domain.PlayField;
+import static ar.edu.ips.aus.seminario2.tetrominos.infra.ui.console.ConsoleHelper.output;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -53,23 +54,23 @@ public class SimpleBlockMovementTests {
         Block block1 = new Block(2,2);
         block1.fill(0,0);
         block1.fill(1,1);
-        System.out.println(block1);
+        System.out.println(output(block1));
         System.out.println("\n\n");
 
         Block block2 = new Block(2, 2);
         block2.fill(0,0);
         block2.fill(1,1);
-        System.out.println(block2);
+        System.out.println(output(block2));
         System.out.println("\n\n");
 
 
         field.place(block1, new Point(0,1));
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
         assertTrue(field.canBePositioned(block1,new Point(0,0)));
 
         field.place(block2, new Point(0,0));
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
         assertFalse(field.canBePositioned(block2, new Point(0,0)));
     }
@@ -123,21 +124,21 @@ public class SimpleBlockMovementTests {
         block1.fill(1,0);
         block1.fill(2,0);
         block1.fill(3,0);
-        System.out.println(block1);
+        System.out.println(output(block1));
         System.out.println("\n\n");
 
         for (int i = 0; i < 2; i++) {
-            System.out.println(field.toString());
+            System.out.println(output(field));
             System.out.println("\n\n");
             field.place(block1, new Point(0, i));
         }
 
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
 
         assertEquals(field.removeCompletedLevels(), 2);
 
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
     }
 
@@ -150,19 +151,19 @@ public class SimpleBlockMovementTests {
         block1.fill(1,0);
         block1.fill(2,0);
         block1.fill(3,0);
-        System.out.println(block1);
+        System.out.println(output(block1));
         System.out.println("\n\n");
 
         field.place(block1, new Point(0, 0));
         field.place(block1, new Point(0, 2));
         field.place(block1, new Point(0, 4));
 
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
 
         assertEquals(field.removeCompletedLevels(), 3);
 
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
     }
 
@@ -175,7 +176,7 @@ public class SimpleBlockMovementTests {
         block1.fill(1,0);
         block1.fill(2,0);
         block1.fill(3,0);
-        System.out.println(block1);
+        System.out.println(output(block1));
         System.out.println("\n\n");
 
         field.place(block1, new Point(0, 0));
@@ -188,12 +189,12 @@ public class SimpleBlockMovementTests {
         field.place(block2, new Point(0, 1));
         field.place(block2, new Point(0, 3));
 
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
 
         assertEquals(field.removeCompletedLevels(), 3);
 
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
 
         Block block3 = new Block(4, 1);

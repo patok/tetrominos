@@ -13,6 +13,9 @@ import org.robolectric.RobolectricTestRunner;
 
 import ar.edu.ips.aus.seminario2.tetrominos.domain.PlayField;
 import ar.edu.ips.aus.seminario2.tetrominos.domain.Tetromino;
+import ar.edu.ips.aus.seminario2.tetrominos.infra.ui.console.ConsoleHelper;
+
+import static ar.edu.ips.aus.seminario2.tetrominos.infra.ui.console.ConsoleHelper.output;
 
 @RunWith(RobolectricTestRunner.class)
 public class TetrominosTests {
@@ -22,21 +25,21 @@ public class TetrominosTests {
         PlayField field = new PlayField(1, 1);
 
         Tetromino block = new Tetromino(Tetromino.Shape.T);
-        System.out.println(block);
+        System.out.println(output(block));
         System.out.println("\n\n");
 
         assertFalse(field.place(block, new Point(0,0)));
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
 
         field = new PlayField(5,5);
 
         assertTrue(field.place(block, new Point(2,2)));
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
 
         assertTrue(field.place(block, new Point(0,1)));
-        System.out.println(field.toString());
+        System.out.println(output(field));
         System.out.println("\n\n");
     }
 
@@ -67,32 +70,32 @@ public class TetrominosTests {
         Tetromino block2 = new Tetromino(block);
 
         block.rotateClockwise();
-        System.out.println(block);
+        System.out.println(output(block));
         System.out.println("\n");
         assertNotEquals(block, block2);
 
         block.rotateCounterClockwise();
-        System.out.println(block);
+        System.out.println(output(block));
         System.out.println("\n");
         assertEquals(block, block2);
 
         block.rotateClockwise();
-        System.out.println(block);
+        System.out.println(output(block));
         System.out.println("\n");
         assertNotEquals(block, block2);
 
         block.rotateClockwise();
-        System.out.println(block);
+        System.out.println(output(block));
         System.out.println("\n");
         assertNotEquals(block, block2);
 
         block.rotateClockwise();
-        System.out.println(block);
+        System.out.println(output(block));
         System.out.println("\n");
         assertNotEquals(block, block2);
 
         block.rotateClockwise();
-        System.out.println(block);
+        System.out.println(output(block));
         System.out.println("\n");
         assertEquals(block, block2);
     }
@@ -102,77 +105,77 @@ public class TetrominosTests {
         PlayField field = new PlayField(10, 4);
 
         Tetromino t1 = new Tetromino(Tetromino.Shape.O);
-        System.out.println(t1);
+        System.out.println(output(t1));
         System.out.println("\n");
         assertTrue(field.place(t1, new Point(0,2)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t2 = new Tetromino(Tetromino.Shape.S);
-        System.out.println(t2);
+        System.out.println(output(t2));
         System.out.println("\n");
         assertTrue(field.place(t2, new Point(2,1)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t3 = new Tetromino(Tetromino.Shape.T);
         t3.rotateClockwise();
         t3.rotateClockwise();
-        System.out.println(t3);
+        System.out.println(output(t3));
         System.out.println("\n");
         assertTrue(field.place(t3, new Point(4,2)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t4 = new Tetromino(Tetromino.Shape.J);
         t4.rotateClockwise();
-        System.out.println(t4);
+        System.out.println(output(t4));
         System.out.println("\n");
         assertTrue(field.place(t4, new Point(7,1)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t5 = new Tetromino(Tetromino.Shape.I);
         t5.rotateCounterClockwise();
-        System.out.println(t5);
+        System.out.println(output(t5));
         System.out.println("\n");
         assertTrue(field.place(t5, new Point(8,0)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t6 = new Tetromino(Tetromino.Shape.T);
-        System.out.println(t6);
+        System.out.println(output(t6));
         System.out.println("\n");
         assertTrue(field.place(t6, new Point(1,0)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t7 = new Tetromino(Tetromino.Shape.O);
-        System.out.println(t7);
+        System.out.println(output(t7));
         System.out.println("\n");
         assertTrue(field.place(t7, new Point(6,1)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t8 = new Tetromino(Tetromino.Shape.L);
-        System.out.println(t8);
+        System.out.println(output(t8));
         System.out.println("\n");
         assertTrue(field.place(t8, new Point(0,-1)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t9 = new Tetromino(Tetromino.Shape.Z);
-        System.out.println(t9);
+        System.out.println(output(t9));
         System.out.println("\n");
         assertTrue(field.place(t9, new Point(3,-1)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
         Tetromino t10 = new Tetromino(Tetromino.Shape.I);
-        System.out.println(t10);
+        System.out.println(output(t10));
         System.out.println("\n");
         assertTrue(field.place(t10, new Point(5,-1)));
-        System.out.println(field);
+        System.out.println(output(field));
         System.out.println("\n");
 
     }
