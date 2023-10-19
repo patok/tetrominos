@@ -2,7 +2,6 @@ package ar.edu.ips.aus.seminario2.tetrominos.infra.ui;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,21 +17,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.util.List;
-
 import ar.edu.ips.aus.seminario2.tetrominos.R;
 import ar.edu.ips.aus.seminario2.tetrominos.adapter.DataRepository;
-import ar.edu.ips.aus.seminario2.tetrominos.adapter.HighScoreHelper;
+import ar.edu.ips.aus.seminario2.tetrominos.adapter.HighScoreVO;
 import ar.edu.ips.aus.seminario2.tetrominos.adapter.PlayFieldViewModel;
 import ar.edu.ips.aus.seminario2.tetrominos.app.Game;
 import ar.edu.ips.aus.seminario2.tetrominos.controller.GameThread;
 import ar.edu.ips.aus.seminario2.tetrominos.domain.Tetromino;
-import ar.edu.ips.aus.seminario2.tetrominos.infra.ScoreAdapter;
-import ar.edu.ips.aus.seminario2.tetrominos.infra.data.ScoreEntity;
 
 public class GameMainActivity extends AppCompatActivity {
 
@@ -51,6 +45,7 @@ public class GameMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_board);
 
         Game game = (Game) getApplication();
+        // TODO TP1 seleccionar el nivel de dificultad inicial
         game.reset();
         Log.i(TAG, "Init game");
 
@@ -170,12 +165,12 @@ public class GameMainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case GAME_FINISHED:
-                    HighScoreHelper helper = new HighScoreHelper();
+                    HighScoreVO helper = new HighScoreVO();
                     helper.message = msg.arg1 > scoreThreshold ? "Felicitaciones, nuevo record!" : "";
                     helper.newHighScore = msg.arg1 > scoreThreshold ? true : false;
                     helper.repo = dataRepository;
                     helper.playerScore = msg.arg1;
-                    // TODO TP2 recuperar el nombre del jugador
+                    // TODO TP1 recuperar el nombre del jugador
                     //  de las SharedPreferences, puede ser conveniente en este punto
                     DialogFragment gameOverDialog =
                             new GameOverDialog(GameMainActivity.this, helper);
@@ -222,7 +217,7 @@ public class GameMainActivity extends AppCompatActivity {
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
             Log.v(MOTION_TAG, "single tap up detected!");
-            // TODO TP2 implemente movimiento a la derecha e izquierda
+            // TODO TP1 implemente movimiento a la derecha e izquierda
             return false;
         }
 

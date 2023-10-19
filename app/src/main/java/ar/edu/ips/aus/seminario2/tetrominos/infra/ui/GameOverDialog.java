@@ -7,20 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import ar.edu.ips.aus.seminario2.tetrominos.R;
-import ar.edu.ips.aus.seminario2.tetrominos.adapter.HighScoreHelper;
+import ar.edu.ips.aus.seminario2.tetrominos.adapter.HighScoreVO;
 
 public class GameOverDialog extends DialogFragment {
 
     private final Activity callingActivity;
-    private final HighScoreHelper helper;
+    private final HighScoreVO helper;
 
-    public GameOverDialog(Activity activity, HighScoreHelper helper) {
+    public GameOverDialog(Activity activity, HighScoreVO helper) {
         this.callingActivity = activity;
         this.helper = helper;
     }
@@ -34,7 +33,7 @@ public class GameOverDialog extends DialogFragment {
         if (helper.newHighScore) {
             view = inflater.inflate(R.layout.dialog_high_score, null);
             builder.setView(view);
-            // TODO TP2 prellenar el nombre del jugador obtenido de las SharedPreferences
+            // TODO TP1 prellenar el nombre del jugador obtenido de las SharedPreferences
         }
 
         final View parentView = view;

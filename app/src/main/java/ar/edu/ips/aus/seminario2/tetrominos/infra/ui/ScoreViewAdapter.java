@@ -1,4 +1,4 @@
-package ar.edu.ips.aus.seminario2.tetrominos.infra;
+package ar.edu.ips.aus.seminario2.tetrominos.infra.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,7 +19,7 @@ import ar.edu.ips.aus.seminario2.tetrominos.adapter.ScoreViewModel;
 import ar.edu.ips.aus.seminario2.tetrominos.domain.Score;
 import ar.edu.ips.aus.seminario2.tetrominos.infra.data.ScoreEntity;
 
-public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> {
+public class ScoreViewAdapter extends RecyclerView.Adapter<ScoreViewAdapter.ViewHolder> {
 
     private final Context context;
     private List<Score> data;
@@ -39,14 +39,14 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> 
         }
     }
 
-    public ScoreAdapter(@NonNull Context context, @NonNull ScoreViewModel model) {
+    public ScoreViewAdapter(@NonNull Context context, @NonNull ScoreViewModel model) {
         this.context = context;
         this.data = new ArrayList<>();
         final Observer<List<ScoreEntity>> scoreObserver = new Observer<>() {
             @Override
             public void onChanged(List<ScoreEntity> scores) {
-                ScoreAdapter.this.data.addAll(scores);
-                ScoreAdapter.this.notifyDataSetChanged();
+                ScoreViewAdapter.this.data.addAll(scores);
+                ScoreViewAdapter.this.notifyDataSetChanged();
             }
         };
         model.getHighestScores().observe((LifecycleOwner) context, scoreObserver);
