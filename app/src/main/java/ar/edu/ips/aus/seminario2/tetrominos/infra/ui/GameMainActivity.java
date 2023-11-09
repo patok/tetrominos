@@ -176,6 +176,7 @@ public class GameMainActivity extends AppCompatActivity {
                     //  de las SharedPreferences, puede ser conveniente en este punto
                     DialogFragment gameOverDialog =
                             new GameOverDialog(GameMainActivity.this, helper);
+                    gameOverDialog.setCancelable(false);
                     gameOverDialog.show(getSupportFragmentManager(), "High score");
                     break;
                 default:
