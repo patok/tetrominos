@@ -12,12 +12,11 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.HashMap;
 import java.util.Map;
 
-import ar.edu.ips.aus.seminario2.tetrominos.infra.data.ScoreEntity;
-import ar.edu.ips.aus.seminario2.tetrominos.infra.ui.PlayFieldView;
 import ar.edu.ips.aus.seminario2.tetrominos.R;
 import ar.edu.ips.aus.seminario2.tetrominos.app.Game;
 import ar.edu.ips.aus.seminario2.tetrominos.domain.PlayField;
 import ar.edu.ips.aus.seminario2.tetrominos.domain.Tetromino;
+import ar.edu.ips.aus.seminario2.tetrominos.infra.ui.PlayFieldView;
 
 public class PlayFieldViewModel extends AndroidViewModel
         implements DataRepository.HighScoresThresholdUpdater {
@@ -79,6 +78,7 @@ public class PlayFieldViewModel extends AndroidViewModel
      * Notify model game data has changed.
      */
     public void update() {
+        // TODO TP2 set gameView background color
         this.gameView.postInvalidate();
         observableNextBlock.postValue(game.nextBlock);
         observableScore.postValue(game.getScore());

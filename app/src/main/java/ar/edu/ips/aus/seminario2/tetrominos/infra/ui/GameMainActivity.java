@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -89,7 +90,8 @@ public class GameMainActivity extends AppCompatActivity {
         LayoutParams params = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
         PlayFieldView playFieldView = new PlayFieldView(this, model);
         playFieldView.setLayoutParams(params);
-        playFieldView.setBackgroundColor(Color.parseColor("#954A8781"));
+        // seteando color de fondo en playFieldView
+        playFieldView.setBackgroundColor(ContextCompat.getColor(this, R.color.bckgd_odd));
         layoutCanvas.addView(playFieldView);
         model.setGameView(playFieldView);
 
