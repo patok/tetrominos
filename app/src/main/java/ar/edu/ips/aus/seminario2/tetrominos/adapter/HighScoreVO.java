@@ -8,4 +8,5 @@ public class HighScoreVO {
     public String message;
     public DataRepository repo;
     public int playerScore;
+    public String playerName;
 }
